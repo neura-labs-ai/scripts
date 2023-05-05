@@ -2,8 +2,13 @@
 
 # Get the source code:
 echo "installing source code files..."
-git clone https://github.com/neura-labs-ai/api
-git clone https://github.com/neura-labs-ai/engine
+if [ ! -d "api" ]; then
+    git clone https://github.com/neura-labs-ai/api
+fi
+
+if [ ! -d "engine" ]; then
+    git clone https://github.com/neura-labs-ai/engine
+fi
 
 # Build the engine code
 cd engine
