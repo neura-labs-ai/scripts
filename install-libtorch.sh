@@ -32,7 +32,7 @@ if ! rm "libtorch-cxx11-abi-shared-with-deps-1.13.1%2Bcpu.zip"; then
 fi
 
 # Set the path to the libtorch directory
-LIBTORCH=$HOME/libs
+LIBTORCH=$HOME/libs/libtorch
 
 # Update the fish shell configuration file
 CONFIG_FILE=~/.config/fish/config.fish
