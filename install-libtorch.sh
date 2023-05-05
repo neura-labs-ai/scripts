@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Set the path to the libtorch directory
-LIBTORCH=$HOME/code/libs
-
 # Download the PyTorch libtorch CPU library zip file.
 # This version is needed for the rust-bert library. (Currently)
 if ! curl -O "https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-1.13.1%2Bcpu.zip"; then
@@ -34,12 +31,31 @@ if ! rm "libtorch-cxx11-abi-shared-with-deps-1.13.1%2Bcpu.zip"; then
   exit 1
 fi
 
-# Add ~/.local/bin to the PATH
-echo 'set PATH $PATH ~/.local/bin' >> ~/.config/fish/config.fish
+# Set the path to the libtorch directory
+LIBTORCH=$HOME/code/libs
 
-# Set the LIBTORCH and LD_LIBRARY_PATH environment variables
-echo "set -x LIBTORCH $LIBTORCH" >> ~/.config/fish/config.fish
-echo "set -x LD_LIBRARY_PATH \$LIBTORCH/lib \$LD_LIBRARY_PATH" >> ~/.config/fish/config.fish
+# Update the fish shell configuration file
+CONFIG_FILE=~/.config/fish/config.fish
+
+if grep -q '^set PATH.*~/.local/bin' "$CONFIG_FILE"; then
+    # Remove any existing PATH entry
+    sed -i '/^set PATH.*~\/.local\/bin/d' "$CONFIG_FILE"
+fi
+
+if grep -q "^set -x LIBTORCH $LIBTORCH" "$CONFIG_FILE"; then
+    # Remove any existing LIBTORCH entry
+    sed -i "/^set -x LIBTORCH $LIBTORCH/d" "$CONFIG_FILE"
+fi
+
+if grep -q "^set -x LD_LIBRARY_PATH.*\$LIBTORCH/lib" "$CONFIG_FILE"; then
+    # Remove any existing LD_LIBRARY_PATH entry
+    sed -i "/^set -x LD_LIBRARY_PATH.*\$LIBTORCH\/lib/d" "$CONFIG_FILE"
+fi
+
+# Add the new paths
+echo 'set PATH $PATH ~/.local/bin' >> "$CONFIG_FILE"
+echo "set -x LIBTORCH $LIBTORCH" >> "$CONFIG_FILE"
+echo "set -x LD_LIBRARY_PATH \$LIBTORCH/lib \$LD_LIBRARY_PATH" >> "$CONFIG_FILE"
 
 echo "PyTorch libtorch CPU library successfully downloaded, unpacked, and moved to 'libs' directory."
 echo "The PATH and LIBTORCH environment variables have been set in the fish shell."
