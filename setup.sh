@@ -16,6 +16,13 @@ fi
 
 echo "Unzip is installed."
 
+if ! command -v rustup &> /dev/null; then
+    echo "rustup not found, installing..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+else
+    echo "rustup is already installed."
+fi
+
 # Make sure open ssl is installed on the system
 if ! dpkg-query -s pkg-config libssl-dev >/dev/null 2>&1 ; then
   echo "pkg-config and/or libssl-dev are not installed. Installing them now..."
