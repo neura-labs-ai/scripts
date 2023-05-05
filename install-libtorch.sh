@@ -13,14 +13,14 @@ if ! unzip "libtorch-cxx11-abi-shared-with-deps-1.13.1%2Bcpu.zip"; then
   exit 1
 fi
 
-# Create a new directory called "libs" if it doesn't exist
-if ! mkdir -p libs; then
+# Create a new directory called "libs" if it doesn't exist in the HOME folder
+if ! mkdir -p "$HOME/libs"; then
   echo "Error: Failed to create directory 'libs'."
   exit 1
 fi
 
-# Move the unpacked zip file into the "libs" directory
-if ! mv libtorch libs/; then
+# Move the unpacked zip file into the "libs" directory in the HOME folder
+if ! mv libtorch "$HOME/libs/"; then
   echo "Error: Failed to move unpacked PyTorch libtorch CPU library to 'libs' directory."
   exit 1
 fi
@@ -32,7 +32,7 @@ if ! rm "libtorch-cxx11-abi-shared-with-deps-1.13.1%2Bcpu.zip"; then
 fi
 
 # Set the path to the libtorch directory
-LIBTORCH=$HOME/code/libs
+LIBTORCH=$HOME/libs
 
 # Update the fish shell configuration file
 CONFIG_FILE=~/.config/fish/config.fish
