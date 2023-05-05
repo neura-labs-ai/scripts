@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Set the path to the libtorch directory
-LIBTORCH=./libs/libtorch
+LIBTORCH=$HOME/code/libs/libtorch
 
 # Download the PyTorch libtorch CPU library zip file.
 # This version is needed for the rust-bert library. (Currently)
