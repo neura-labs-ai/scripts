@@ -16,6 +16,7 @@ fi
 
 echo "Unzip is installed."
 
+# Make sure rustup is installed on the system
 if ! command -v rustup &> /dev/null; then
     echo "rustup not found, installing..."
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -33,6 +34,24 @@ if ! dpkg-query -s pkg-config libssl-dev >/dev/null 2>&1 ; then
 else
   echo "pkg-config and libssl-dev are installed."
 fi
+
+# Make sure python3 is installed on the system
+if ! command -v python3 >/dev/null 2>&1; then
+  echo "Python3 not found. Installing..."
+  sudo apt-get update
+  sudo apt-get install python3 -y
+fi
+
+# Make sure pip3 is installed on the system
+if ! command -v pip3 >/dev/null 2>&1; then
+  echo "pip3 not found. Installing..."
+  sudo apt-get update
+  sudo apt-get install python3-pip -y
+fi
+
+echo "Installing PyTorch..."
+pip3 install torch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1
+
 
 # Make sure pyTorch is installed on the system
 if [ ! -d "libs" ] || [ ! -f "libs/libtorch" ]; then
