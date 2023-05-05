@@ -13,13 +13,13 @@ echo "installing source code files..."
 git clone https://github.com/neura-labs-ai/api
 git clone https://github.com/neura-labs-ai/engine
 
-echo "building and moving release binary..."
-cd api
+# Build the engine code
+cd engine
 cargo build --release
-mv target/release/api ../code
-cd ../engine
-cargo build --release
-mv target/release/engine ../code
-cd ..
 
-echo "build done."
+# Move the API binary to the code folder
+cd ../api/target/release/
+mv neura-labs-api ../../code/
+cd ../../
+
+echo "source code installation and build completed."
