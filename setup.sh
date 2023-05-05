@@ -42,5 +42,34 @@ else
   echo "System is already setup. Skipping setup.sh..."
 fi
 
+# Create .env file
+touch .env
+
+echo "Please enter your MongoDB URI: "
+read MONGODB_URI
+
+echo "Please enter your super key: "
+read SUPER_KEY
+
+echo "Please enter a port: "
+read PORT
+
+echo "Please enter an adress: "
+read ADDRESS
+
+# Add MONGODB_URI to .env file
+echo "MONGODB_URI=$MONGODB_URI" >> .env
+
+# Add SUPER_KEY to .env file
+echo "SUPER_KEY=$SUPER_KEY" >> .env
+
+# Add PORT to .env file
+echo "PORT=$PORT" >> .env
+
+# Add ADDRESS to .env file
+echo "ADDRESS=$ADDRESS" >> .env
+
+echo ".env file created successfully!"
+
 # Reload the fish shell
 exec fish

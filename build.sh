@@ -10,8 +10,8 @@ if [ ! -d "engine" ]; then
     git clone https://github.com/neura-labs-ai/engine
 fi
 
-# Build the engine code
-cd engine
+# Build the api code
+cd api
 cargo build --release
 
 # Move the API binary to the code folder
