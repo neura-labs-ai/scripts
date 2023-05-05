@@ -1,5 +1,21 @@
 #!/usr/bin/env bash
 
+# Check if unzip is installed
+if ! command -v unzip &> /dev/null; then
+    # If unzip is not installed, install it
+    if [[ "$(uname)" == "Linux" ]]; then
+        sudo apt-get update
+        sudo apt-get install -y unzip
+    elif [[ "$(uname)" == "Darwin" ]]; then
+        brew install unzip
+    else
+        echo "Error: Unsupported operating system."
+        exit 1
+    fi
+fi
+
+echo "Unzip is installed."
+
 # Make sure open ssl is installed on the system
 if ! dpkg-query -s pkg-config libssl-dev >/dev/null 2>&1 ; then
   echo "pkg-config and/or libssl-dev are not installed. Installing them now..."
