@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+if command -v fish &>/dev/null; then
+  echo "Fish shell is already installed!"
+else
+  echo "Installing Fish shell..."
+  # Add Fish shell PPA
+  sudo apt-add-repository -y ppa:fish-shell/release-3
+  sudo apt update
+  sudo apt install -y fish
+fi
+
 # Check if unzip is installed
 if ! command -v unzip &> /dev/null; then
     # If unzip is not installed, install it
