@@ -55,7 +55,7 @@ echo "Skipping PyTorch installation using pip..."
 
 
 # Make sure pyTorch is installed on the system
-if [ ! -d "libs" ] || [ ! -f "libs/libtorch" ]; then
+if [ ! -d "../code/libs" ] || [ ! -f "../code/libs/libtorch" ]; then
   echo "libs folder or libtorch script not found. Running setup.sh..."
   ./install-libtorch.sh
 else
