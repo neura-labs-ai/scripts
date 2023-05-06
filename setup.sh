@@ -32,6 +32,9 @@ if ! command -v rustup &> /dev/null; then
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     sudo apt-get update
     sudo apt-get install build-essential
+
+    # Need to reload the shell for cargo to be available
+    source ~/.config/fish/config.fish
 else
     echo "rustup is already installed."
 fi
