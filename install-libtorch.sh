@@ -2,13 +2,13 @@
 
 # Download the PyTorch libtorch CPU library zip file.
 # This version is needed for the rust-bert library. (Currently)
-if ! curl -O "https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-1.13.1%2Bcpu.zip"; then
+if ! curl -O "https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-2.0.0%2Bcpu.zip"; then
   echo "Error: Failed to download PyTorch libtorch CPU library zip file."
   exit 1
 fi
 
 # Unpack the zip file
-if ! unzip "libtorch-cxx11-abi-shared-with-deps-1.13.1%2Bcpu.zip"; then
+if ! unzip "libtorch-cxx11-abi-shared-with-deps-2.0.0%2Bcpu.zip"; then
   echo "Error: Failed to unzip PyTorch libtorch CPU library zip file."
   exit 1
 fi
@@ -26,7 +26,7 @@ if ! mv libtorch "$HOME/libs/"; then
 fi
 
 # Remove the old zip file
-if ! rm "libtorch-cxx11-abi-shared-with-deps-1.13.1%2Bcpu.zip"; then
+if ! rm "libtorch-cxx11-abi-shared-with-deps-2.0.0%2Bcpu.zip"; then
   echo "Error: Failed to remove old PyTorch libtorch CPU library zip file."
   exit 1
 fi

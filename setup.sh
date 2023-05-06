@@ -49,8 +49,9 @@ if ! command -v pip3 >/dev/null 2>&1; then
   sudo apt-get install python3-pip -y
 fi
 
-echo "Installing PyTorch..."
-pip3 install torch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1
+echo "Skipping PyTorch installation using pip..."
+# echo "Installing PyTorch..."
+# pip3 install torch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1
 
 
 # Make sure pyTorch is installed on the system
