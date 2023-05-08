@@ -28,9 +28,5 @@ then
     exit 1
 fi
 
-# Move the API binary to the code folder
-cd ../api/target/release/
-mv neura-labs-api ../../code/
-cd ../../
-
 echo "source code installation and build completed."
+echo "You can find the build file in api/target/release/neura-labs-api"
